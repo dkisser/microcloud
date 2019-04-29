@@ -1,0 +1,12 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: sync-provider
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:3001/eureka
+

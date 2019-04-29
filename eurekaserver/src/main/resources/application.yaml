@@ -1,0 +1,16 @@
+server:
+  port: 3001
+
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #不让自己注册到Eureka中
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      #设置Eureka的链接地址，即使是Eureka服务端也要配置该参数
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
