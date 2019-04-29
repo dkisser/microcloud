@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-provider
+
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:3001/eureka
+
+zuul:
+#  AccessFilter:
+#    pre:
+#      disable:  false                              #对应自己类的名字，设置是否生效
+  routes:
+    traditional-url:                             # 传统代理（名字可以自定义）
+      path: /tr-url/**
+      url: http://localhost:8001/
+    syncProvider-route:                          #基于服务端的代理（名字可以自定义）
+      path: /sync/**
+      service-id: sync-provider               #对应注册到eureka中的服务名
+    webProvider-route:
+      path: /web/**
+      service-id: web-provider
