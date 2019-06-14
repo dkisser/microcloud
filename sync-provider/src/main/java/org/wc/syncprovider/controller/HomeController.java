@@ -1,9 +1,11 @@
 package org.wc.syncprovider.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import org.wc.syncprovider.db.pojo.Goods;
 import org.wc.syncprovider.service.remote.WebProviderService;
 
@@ -21,4 +23,8 @@ public class HomeController {
         return webProviderService.findAllGoods(goods);
     }
 
+    @PostMapping(value = "postTest")
+    public String postTest (String value){
+        return "sucess accept:" + value;
+    }
 }
