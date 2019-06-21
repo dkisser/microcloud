@@ -27,6 +27,7 @@ eureka:
   client:
     service-url:
       defaultZone:  http://localhost:3001/eureka
+    enabled: true
 
 mybatis:
   #设置mybatis的mapper文件扫描路径

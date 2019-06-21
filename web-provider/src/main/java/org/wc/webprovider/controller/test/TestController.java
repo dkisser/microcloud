@@ -1,6 +1,7 @@
 package org.wc.webprovider.controller.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,11 @@ public class TestController {
     @PostMapping("findAllGoods")
     public List<Goods> findAllGoods (Goods goods){
         return goodsService.findGoodsList(goods);
+    }
+
+    @GetMapping(value = "testLB")
+    public String testLoadBalance (){
+        return "web-provider";
     }
 
 }

@@ -1,9 +1,11 @@
 package org.wc.gateway;
 
+import com.netflix.zuul.ZuulFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.wc.gateway.filter.AccessFilter;
 import org.wc.gateway.route.PropertiesRouter;
 
 /**
@@ -18,6 +20,11 @@ public class ZuulConfig {
     @Bean
     public PropertiesRouter getPropRouter (){
         return new PropertiesRouter("/",zuulProperties);
+    }
+
+    @Bean
+    public ZuulFilter accessFilter (){
+        return new AccessFilter();
     }
 
 }

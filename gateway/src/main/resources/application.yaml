@@ -11,9 +11,9 @@ eureka:
       defaultZone:  http://localhost:3001/eureka
 
 zuul:
-  AccessFilter:
-    pre:
-      disable: true                              #对应自己类的名字，设置是否生效
+#  AccessFilter:
+#    pre:
+#      disable: true                              #对应自己类的名字，设置是否生效
   routes:
     traditional-url:                             # 传统代理（名字可以自定义）
       path: /tr-url/**
