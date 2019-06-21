@@ -21,7 +21,8 @@ public class MyUserDetailService implements UserDetailsService {
 //    private PermissionService permissionService;
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String uname) throws UsernameNotFoundException {
+
         return null;
     }
 }
