@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by WenChen on 2019/6/21.
  */
-public interface BaseMapper {
+public interface BaseMapper{
 
     <T> T selectOne (T record);
 

@@ -1,0 +1,58 @@
+package com.example.auth.controller;
+
+import com.alibaba.fastjson.JSON;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * Created by WenChen on 2019/6/27.
+ */
+@CrossOrigin
+@RestController
+public class UserController {
+    @GetMapping("oauth/me")
+    public Principal getUser(Principal user){
+        System.out.println(".. 进入　获取用户信息　方法   ..........  ");
+        System.out.println(JSON.toJSONString(user));
+        return user;
+    }
+
+    @GetMapping("api/user")
+    public Principal user(Principal user){
+        System.out.println(".. 进入　获取用户信息　方法   ..........  ");
+        System.out.println(JSON.toJSONString(user));
+        return user;
+    }
+
+
+
+
+    @RequestMapping(path = "api/messages", method = RequestMethod.GET)
+    public List<String> getMessages(Principal principal) {
+        List<String> list = new LinkedList<>();
+        list.add("俏如来");
+        list.add("帝如来");
+        list.add("鬼如来");
+        return list;
+    }
+
+    @RequestMapping(path = "api/messages", method = RequestMethod.POST)
+    public String postMessage(Principal principal) {
+        return "POST -> 默苍离 ";
+    }
+
+    /**
+     * 当前登录人信息
+     * @return
+     */
+    @RequestMapping(path = "api/loginUser", method = RequestMethod.GET)
+    public UserDetails currentlyLoginUser(){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return  userDetails;
+    }
+}

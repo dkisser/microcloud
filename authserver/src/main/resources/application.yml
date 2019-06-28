@@ -6,7 +6,7 @@ spring:
     name: auth-server
   datasource:
     #数据库链接配置
-    url: jdbc:mysql://localhost/eshop?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost/auth?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
@@ -30,7 +30,7 @@ eureka:
 
 mybatis:
   #设置mybatis的mapper文件扫描路径
-  mapper-locations: classpath:mybatis/**/*.xml
+  mapper-locations: classpath*:mybatis/**/*.xml
 
 logging:
   level:

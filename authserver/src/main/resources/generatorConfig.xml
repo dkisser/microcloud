@@ -18,7 +18,7 @@
         </commentGenerator>
         <!-- 配置数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/eshop"
+                        connectionURL="jdbc:mysql://localhost:3306/auth?useUnicode=true&amp;characterEncoding=UTF-8"
                         userId="root"
                         password="123456" />
 
@@ -41,7 +41,7 @@
         </javaClientGenerator>
 
         <!-- table表生成对应的DoaminObject -->
-        <table tableName="user" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="c_user" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
 
