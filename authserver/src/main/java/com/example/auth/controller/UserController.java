@@ -15,24 +15,21 @@ import java.util.List;
 @CrossOrigin
 @RestController
 public class UserController {
-    @GetMapping("oauth/me")
+    @GetMapping("/oauth/me")
     public Principal getUser(Principal user){
         System.out.println(".. 进入　获取用户信息　方法   ..........  ");
         System.out.println(JSON.toJSONString(user));
         return user;
     }
 
-    @GetMapping("api/user")
+    @GetMapping("/api/user")
     public Principal user(Principal user){
         System.out.println(".. 进入　获取用户信息　方法   ..........  ");
         System.out.println(JSON.toJSONString(user));
         return user;
     }
 
-
-
-
-    @RequestMapping(path = "api/messages", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/messages", method = RequestMethod.GET)
     public List<String> getMessages(Principal principal) {
         List<String> list = new LinkedList<>();
         list.add("俏如来");

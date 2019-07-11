@@ -56,7 +56,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-
         // 配置那些资源需要保护的
         http.requestMatchers().antMatchers("/api/**")
                 .and()

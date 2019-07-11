@@ -19,6 +19,7 @@ import java.util.Map;
  * 自定义身份证认证失败返回数据格式
  * Created by WenChen on 2019/6/27.
  */
+@Component(value = "customAuthentication")
 public class CustomAuthenticationEntryPoint extends OAuth2AuthenticationEntryPoint{
 
     private Logger log = LoggerFactory.getLogger(CustomAuthenticationEntryPoint.class);

@@ -2,6 +2,7 @@ package com.example.auth.config;
 
 import com.example.auth.service.MyUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -54,7 +55,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private OAuth2AuthenticationManager authenticationManager = new OAuth2AuthenticationManager();   //认证方式
 
     @Autowired
-    private MyUserDetailService myUserDetailService;
+    private MyUserDetailService userDetailService;
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -85,7 +86,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager)
                 .accessTokenConverter(accessTokenConverter())
-                .userDetailsService(myUserDetailService) //必须注入userDetailsService否则根据refresh_token无法加载用户信息
+                .userDetailsService(userDetailService) //必须注入userDetailsService否则根据refresh_token无法加载用户信息
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST, HttpMethod.OPTIONS)  //支持GET  POST  请求获取token
                 .reuseRefreshTokens(true) //开启刷新token
                 .tokenServices(tokenServices());
