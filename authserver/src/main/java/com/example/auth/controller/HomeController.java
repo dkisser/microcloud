@@ -1,7 +1,9 @@
 package com.example.auth.controller;
 
+import com.example.auth.pojo.CUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by WenChen on 2019/6/24.
@@ -9,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = "/test")
-    public String test(){
-        return "test";
-    }
-
     @RequestMapping(value = "/loginUI")
-    public String login (){
-        return "login";
+    public String loginUI(){
+        return "loginUI";
     }
 
+    @RequestMapping(value = "/login")
+    @ResponseBody
+    public String login(CUser user){
+        return "sucess";
+    }
 }

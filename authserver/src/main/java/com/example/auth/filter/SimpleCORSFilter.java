@@ -19,11 +19,11 @@ public class SimpleCORSFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         httpServletRequest.setCharacterEncoding("utf-8");
         httpServletResponse.setCharacterEncoding("utf-8");
-        httpServletResponse.setHeader("Content-Type", "application/json");
+//        httpServletResponse.setHeader("Content-Type", "application/json");
         httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");//允许所以域名访问，
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");//允许的访问方式
-        httpServletResponse.setHeader("Access-Control-Allow-Headers", "x-requested-with,content-type,Authorization");
-        httpServletResponse.setHeader("Access-Control-Request-Headers", "x-requested-with,content-type,Accept,Authorization");
+//        httpServletResponse.setHeader("Access-Control-Allow-Headers", "x-requested-with,content-type,Authorization");
+//        httpServletResponse.setHeader("Access-Control-Request-Headers", "x-requested-with,content-type,Accept,Authorization");
         httpServletResponse.setHeader("Access-Control-Request-Method", "GET,POST,PUT,DELETE,OPTIONS");
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }

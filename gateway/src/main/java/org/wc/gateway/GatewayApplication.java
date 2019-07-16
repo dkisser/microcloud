@@ -1,6 +1,7 @@
 package org.wc.gateway;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 @EnableEurekaClient
 @EnableZuulProxy
 @SpringBootApplication
+@MapperScan(value = {"org.wc.gateway.db"})
 public class GatewayApplication implements CommandLineRunner {
 
     @Autowired

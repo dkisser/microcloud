@@ -59,6 +59,14 @@ public class PermitAuthenticationFilter extends OAuth2AuthenticationProcessingFi
 
     }
 
+    /**
+     * 请求/oauth/authorize会触发此方法
+     * @param servletRequest
+     * @param servletResponse
+     * @param filterChain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) servletResponse;

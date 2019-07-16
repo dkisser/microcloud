@@ -15,6 +15,6 @@ public class CustomAccessDenieHandler extends OAuth2AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException authException) throws IOException, ServletException {
         super.handle(request, response, authException);
-        response.sendRedirect("/login");
+        response.sendRedirect("/loginUI");
     }
 }

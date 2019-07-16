@@ -4,7 +4,24 @@ server:
 spring:
   application:
     name: gateway-provider
-
+  datasource:
+    #数据库链接配置
+    url: jdbc:mysql://localhost/auth?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    #数据库连接池配置
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize:  5
+    minIdle:  5 #最小空闲链接
+    maxActive:  20  #最大活跃链接
+    maxWait:  60000 #获取连接等待超时的时间
+    timeBetweenEvictionRunsMillis:  60000 #间隔多久才进行一次检测，检测需要关闭的空闲连接
+    minEvictableIdleTimeMillis: 300000  #一个连接在池中最小生存的时间
+    validationQuery:  SELECT 'x'
+    testWhileIdle:  true
+    testOnBorrow: true
+    testOnReturn: true
 eureka:
   client:
     service-url:
@@ -24,8 +41,20 @@ zuul:
     webProvider-route:
       path: /web/**
       service-id: web-provider
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+
+security:
+  oauth2:
+    server: http://localhost:3333
+    resource:
+      user-info-uri: ${security.oauth2.server}/oauth/user
+    client:
+      client-id: client_3
+      client-secret: secret
+      access-token-uri: ${security.oauth2.server}/oauth/token
+      user-authorization-uri: ${security.oauth2.server}/oauth/authorize

@@ -43,20 +43,22 @@ public class AuthorizationWebConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/assets/**", "/css/**", "/images/**","/favicon.ico");
+        web.ignoring().antMatchers("/assets/**", "/css/**", "/images/**","/favicon.ico","/templates/**","/static/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf().disable()//关闭跨站请求防护
                 .requestMatchers()   //　requestMatchers 配置　数组
-                .antMatchers("/oauth/**","/login","/home")
+                .antMatchers("/oauth/**","/login","/home/**")
                 .and()
                 .authorizeRequests()         //authorizeRequests　配置权限　顺序为先配置需要放行的url 在配置需要权限的url，最后再配置.anyRequest().authenticated()
-                .antMatchers("/oauth/**").authenticated()
+                .antMatchers("/api/**")
+//                .anyRequest()
+                .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/loginUI")
                 .permitAll();
         http.addFilterBefore(simpleCORSFilter, SecurityContextPersistenceFilter.class);
     }

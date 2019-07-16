@@ -94,13 +94,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
+        /**
+         * 自定义一些token返回的信息
+         * @param accessToken
+         * @param authentication
+         * @return
+         */
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter() {
-            /**
-             * 自定义一些token返回的信息
-             * @param accessToken
-             * @param authentication
-             * @return
-             */
             @Override
             public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
                 String grantType = authentication.getOAuth2Request().getGrantType();

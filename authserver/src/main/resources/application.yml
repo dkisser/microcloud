@@ -22,6 +22,11 @@ spring:
     testWhileIdle:  true
     testOnBorrow: true
     testOnReturn: true
+    druid:
+      remove-abandoned: true
+      remove-abandoned-timeout-millis: 1800
+      log-abandoned: false
+
 eureka:
   client:
     service-url:
@@ -37,10 +42,11 @@ logging:
     root: info
     org:
       springframework:
-        web:  warn
+        security: debug
+        web:  debug
       apache:
-        tomcat: warn
+        tomcat: info
       wc:
         webprovider:
           db:
-            dao:  debug
+            dao:  info

@@ -54,6 +54,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--beetl-->
+        <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetl</artifactId>
+            <version>2.8.5</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
